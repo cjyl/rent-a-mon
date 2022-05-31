@@ -1,0 +1,17 @@
+
+<div class="card align-items-center" style="width: 100%;">
+    <h1>Your profile</h1>
+    <% if current_user.gender == 'male' %>
+      <%= image_tag 'james.png', style:"width: 500px;" %>
+    <% elsif current_user.gender == 'female' %>
+     <%= image_tag'jessie.png', style:"width: 500px;" %>
+    <% else %>
+      <%= image_tag'meowth.png', style:"width: 500px;" %>
+    <% end %>
+    <div class="card-body">
+      <h2>Name: <%= current_user.first_name %></h2>
+      <h2>Surname: <%= current_user.last_name %></h2>
+      <h2>Gender: <%= current_user.gender %></h2>
+      <%# <a href="#" class="btn btn-primary">Click me</a> %>
+    </div>
+</div>
