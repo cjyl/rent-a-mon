@@ -6,15 +6,16 @@
 
   <div class="form-inputs">
     <%= f.input :first_name,
-                required: false,
+                required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" } %>
     <%= f.input :last_name,
-                required: false,
+                required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last_name" } %>
     <%= f.input :gender,
-                required: false,
+                collection: ['male', 'female', 'other'],
+                required: true,
                 autofocus: true,
                 input_html: { autocomplete: "gender" } %>
     <%= f.input :email,
