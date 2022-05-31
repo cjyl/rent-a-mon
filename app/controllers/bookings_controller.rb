@@ -9,12 +9,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.pokemon = @pokemon
-    # raise
     if @booking.save
-      redirect_to pokemon_path(@pokemon)
+      redirect_to profile_users_path
     else
       render 'pokemons/show', status: :unprocessable_entity
-      #Make sure we change the path to user_path(current_user) once book
     end
   end
 

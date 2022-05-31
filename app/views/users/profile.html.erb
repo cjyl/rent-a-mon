@@ -1,7 +1,11 @@
 
 <div class="card align-items-center" style="width: 100%;">
     <h1>Your profile</h1>
-      <%= image_tag current_user.image_path, style:"width: 500px;" %>
+    <% if current_user && current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class:"width:500px;" %>
+    <% else %>
+      <%= image_tag current_user.image_path, class:"width:500px;" %>
+    <% end %>
     <div class="card-body">
       <h2>Name: <%= current_user.first_name %></h2>
       <h2>Surname: <%= current_user.last_name %></h2>
