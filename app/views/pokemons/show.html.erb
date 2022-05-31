@@ -1,4 +1,6 @@
-
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://pokemonrevolution.net/forum/uploads/monthly_2019_07/grasspokes.gif.f4c3e5db10fdcb5bc0f9fb101c54debd.gif)">
+  Let's play
+</div>
 
 
 <div class="container mt-5">
@@ -8,17 +10,15 @@
       <div class="card" style="width: 18rem;">
        <%= image_tag('pikachu.png') %>
         <div class="card-body">
-          <h5 class="card-title"><%= @pokemon.name %></h5>
+          <h2 class="card-title"><%= @pokemon.name %></h2>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Location: <%= @pokemon.location %></li>
-        <li class="list-group-item">Element: <%= @pokemon.element %></li>
-        <li class="list-group-item">Move: <%= @pokemon.move %></li>
-      </ul>
-</div>
-
-
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Location: <%= @pokemon.location %></li>
+          <li class="list-group-item">Element: <%= @pokemon.element %></li>
+          <li class="list-group-item">Move: <%= @pokemon.move %></li>
+        </ul>
+      </div>
     </div>
 
     <div class="col-12 col-lg-4">
@@ -36,5 +36,7 @@
         <h1>Please log in to book a battle!</h1>
       <% end %>
     </div>
+
+
   </div>
 </div>
