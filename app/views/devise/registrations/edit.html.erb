@@ -8,6 +8,7 @@
     <%= f.input :first_name, required: true, autofocus: true %>
     <%= f.input :last_name, required: true, autofocus: true %>
     <%= f.input :gender, collection: ['male', 'female', 'other'], required: true, autofocus: true %>
+    <%= f.input :photo, as: :file %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
