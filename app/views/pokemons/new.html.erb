@@ -1,0 +1,15 @@
+<div class="container">
+<%= simple_form_for @pokemon do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :type %>
+    <%= f.input :move %>
+    <%= f.input :location %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Add your pokemon", class: "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
