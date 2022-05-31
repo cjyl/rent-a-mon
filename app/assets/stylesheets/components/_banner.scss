@@ -1,5 +1,5 @@
 .banner {
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("assets/images/background.png");
+  // background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("assets/images/background.png");
   // background-color: #0275BE;
   background-size: cover;
   background-position: center;
@@ -8,10 +8,11 @@
 
 .banner h1 {
   margin: 0;
-  color: white;
+  color: #FFCC02;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 80px;
+  font-weight: bolder;
+  text-shadow: 6px 6px #0275BE;
 }
 
 .banner p {

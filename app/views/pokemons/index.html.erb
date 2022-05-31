@@ -1,17 +1,16 @@
-<div class="banner" style="background-image: url(<%= asset_path('background.png') %>);">
+<div class="banner text-center" style="background-image: url(<%= asset_path('background_image_v2.jpg') %>);">
   <div class="container">
-    <h1>Look for pokemons around you!</h1>
-    <a class="btn btn-flat" href="#">Search now</a>
+    <h1 class="py-4">Gotta Beat 'Em All!</h1>
+    <a class="btn btn-primary" href="#">Search now</a>
+    <%# <%= form_for  <--This is later for search %>
   </div>
 </div>
 
-<div class="container">
+<div class="container my-3">
   <div class="row g-3">
-
-    <%# <%= form_for  <--This is later for search %>
     <% @pokemons.each do |pokemon| %>
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card" style="width: 100%;">
+        <div class="card rounded border-warning shadow-sm" style="width: 100%;">
           <%= image_tag('pikachu.png') %>
           <div class="card-body">
             <h5 class="card-title"><%= pokemon.name %></h5>
