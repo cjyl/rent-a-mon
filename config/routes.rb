@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pokemons#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :pokemons
-  # Defines the root path route ("/")
-  # root "articles#index"
+
+  resources :pokemons, except: [:index] do
+    resources :bookings, only: [:new, :create]
+    resources :reviews, only: [:new, :create]
+  end
+
+  resources :users, only: [:show]
 end
