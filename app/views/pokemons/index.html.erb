@@ -16,7 +16,7 @@
             <p class="card-text">Location: <%= pokemon.location %></p>
             <p class="card-text">Element: <%= pokemon.element %></p>
             <p class="card-text">User: <%= pokemon.user.email %></p>
-            <a href="#" class="btn btn-primary">Click me</a>
+            <%= link_to "check me out", "pokemons/#{pokemon.id}", class: 'btn btn-outline-primary' %>
           </div>
         </div>
       </div>
