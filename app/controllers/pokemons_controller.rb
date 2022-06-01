@@ -20,6 +20,17 @@ class PokemonsController < ApplicationController
     @booking = Booking.new
   end
 
+  def edit
+    @pokemon = Pokemon.find(params[:id])
+  end
+
+  def update
+    @pokemon = Pokemon.find(params[:id])
+    @pokemon.user = current_user
+    @pokemon.update(pokemon_params)
+    redirect_to profile_users_path
+  end
+
   def create
     @pokemon = Pokemon.new(pokemon_params)
     @pokemon.user = current_user
