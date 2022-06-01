@@ -1,15 +1,22 @@
 
 <div class="card align-items-center" style="width: 100%;">
-    <h1>Your profile</h1>
-    <% if current_user && current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, class:"width:500px;" %>
-    <% else %>
-      <%= image_tag current_user.image_path, class:"width:500px;" %>
-    <% end %>
-    <div class="card-body">
-      <h2>Name: <%= current_user.first_name %></h2>
-      <h2>Surname: <%= current_user.last_name %></h2>
-      <h2>Gender: <%= current_user.gender %></h2>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card-profile mt-3">
+        <% if current_user && current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class:"profile-img" %>
+        <% else %>
+          <%= image_tag current_user.image_path, class:"profile-img" %>
+        <% end %>
+        <div class="card-body">
+          <div class="pb-3"style="border-bottom: 1px solid grey !important;">
+            <%= image_tag "poke-profile.png", class:"poke-profile-img"%> Pokemons: <%= current_user.pokemons.length %> <br>
+            <i class="fa-solid fa-star pt-3" style="font-size: 24px;"></i> Reviews: <%= current_user.reviews.length %> <br>
+          </div>
+          <p>Name: <%= current_user.first_name %></p>
+          <p>Surname: <%= current_user.last_name %></p>
+          <p>Gender: <%= current_user.gender %></p>
+        </div>
+      </div>
     </div>
    <%= link_to "Edit profile",  edit_user_registration_path, class:"btn btn-success" %>
 </div>

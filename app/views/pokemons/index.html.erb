@@ -6,21 +6,31 @@
   </div>
 </div>
 
-<div class="container my-3">
-  <div class="row g-3">
-    <% @pokemons.each do |pokemon| %>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card rounded border-warning shadow-sm" style="width: 100%;">
-          <%= image_url('') %>
-          <div class="card-body">
-            <h5 class="card-title"><%= pokemon.name %></h5>
-            <p class="card-text">Location: <%= pokemon.location %></p>
-            <p class="card-text">Element: <%= pokemon.element %></p>
-            <p class="card-text">User: <%= pokemon.user.first_name %></p>
-            <%= link_to "View me!", pokemon_path(pokemon), class: 'btn btn-outline-primary' %>
-          </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="container my-3">
+        <div class="row g-3">
+          <% @pokemons.each do |pokemon| %>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <div class="card rounded border-warning shadow-sm" style="width: 100%;">
+                <%= image_tag('pikachu.png') %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= pokemon.name %></h5>
+                  <p class="card-text">Address: <%= pokemon.address %></p>
+                  <p class="card-text">Element: <%= pokemon.element %></p>
+                  <p class="card-text">User: <%= pokemon.user.first_name %></p>
+                  <%= link_to "View me!", pokemon_path(pokemon), class: 'btn btn-outline-primary' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+    <div class="col-4">
+      <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiYW5ldXRoIiwiYSI6ImNsMzRlbmw0dTAzdDYza3A1Mmd2eXR2OG8ifQ.vEGysdZnmdcJ1BDwhQR0tA'>
+    </div>
   </div>
 </div>
