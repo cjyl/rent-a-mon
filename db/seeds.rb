@@ -1,3 +1,5 @@
+require 'open-uri'
+require 'json'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -19,14 +21,25 @@ puts "Creating pokemon"
     email: Faker::Internet.email,
     password: Faker::Internet.password
   )
+
+  puts name = Faker::Games::Pokemon.name
+  url = "https://pokeapi.co/api/v2/pokemon/#{name.downcase}"
+  pokemon = JSON.parse(URI.open(url).read)
+  type = pokemon['types'][0]['type']['name']
+  moves = pokemon['abilities'].map! do |ability|
+    ability['ability']['name'].capitalize
+  end
+  abilities = moves.join('; ')
+
   Pokemon.create(
-    name: Faker::Games::Pokemon.name,
-    move: Faker::Games::Pokemon.move,
-    address: Faker::Address.full_address,
-    element: %w[Normal Fire Electric Rock Water].sample,
+    name: name,
+    move: abilities,
+    location: %w[Westminster Southwark Lambeth Hackney Greenwich Islington Camden Chelsea Kensington Woolwich Hoxton Whitechapel].sample,
+    element: type,
     user: user
   )
-  puts "Creating #{user.email}"
+  # puts "Creating #{user.email}"
 end
+
 
 puts "Finished seeding database"
