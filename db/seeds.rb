@@ -34,7 +34,7 @@ puts "Creating pokemon"
   Pokemon.create(
     name: name,
     move: abilities,
-    location: %w[Westminster Southwark Lambeth Hackney Greenwich Islington Camden Chelsea Kensington Woolwich Hoxton Whitechapel].sample,
+    address: %w[Westminster Southwark Lambeth Hackney Greenwich Islington Camden Chelsea Kensington Woolwich Hoxton Whitechapel].sample,
     element: type,
     user: user
   )
