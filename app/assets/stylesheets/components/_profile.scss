@@ -1,0 +1,25 @@
+.card-profile {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  max-width: 308px !important;
+  padding: 24px !important;
+  border: 1px solid #DDDDDD !important;
+  border-radius: 8px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.profile-img {
+  width: 140px;;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.poke-profile-img {
+  width: 28px;;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 50%
+}
