@@ -14,52 +14,58 @@
                 <i class="fa-solid fa-star pt-3" style="font-size: 24px;"></i> Reviews: <%= current_user.reviews.length %> <br>
                 <i class="fa-solid fa-book pt-3" style="font-size: 24px;"></i> Bookings: <%= current_user.bookings.length %> <br>
               </div>
-              <p>Name: <%= current_user.first_name %></p>
-              <p>Surname: <%= current_user.last_name %></p>
-              <p>Gender: <%= current_user.gender %></p>
+              <div class="pb-3">
+                <p class="pt-3">Name: <%= current_user.first_name %></p>
+                <p>Surname: <%= current_user.last_name %></p>
+                <p>Gender: <%= current_user.gender %></p>
+                <%= link_to "Edit profile",  edit_user_registration_path, class:"btn btn-success" %>
+              </div>
             </div>
           </div>
-        <%= link_to "Edit profile",  edit_user_registration_path, class:"btn btn-success" %>
       </div>
     </div>
     <div class="col-8">
-      <div class="container">
-       <h2>My pokemons</h2>
+      <div class="container mb-3">
+       <h2 style="font-size: 24px; font-weight: bold;">My pokemons</h2>
         <div class="row">
           <% current_user.pokemons.each do |pokemon| %>
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
               <div class="card" style="width: 100%;">
-                <%= cl_image_tag pokemon.photo.key %>
+                <%= cl_image_tag pokemon.photo.key, class:"poke-img"%>
                 <div class="card-body">
                   <h5 class="card-title"><%= pokemon.name %></h5>
-                  <p class="card-text">Address: <%= pokemon.address %></p>
                   <p class="card-text">Element: <%= pokemon.element %></p>
-                  <p class="card-text">User: <%= pokemon.user.first_name %></p>
-                  <%= link_to "See more details", pokemon_path(pokemon), class: "btn btn-primary" %>
+                  <p class="card-text">Trainer: <%= pokemon.user.first_name %></p>
+                  <%= link_to "Edit my pokemon", edit_pokemon_path(pokemon), class: "btn btn-primary" %>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
-      </div>
-      <%= link_to "Add a Pokemon",  new_pokemon_path, class:"btn btn-primary" %>
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <%= link_to "Add a Pokemon",  new_pokemon_path, class:"btn btn-primary my-3" %>
+          </div>
+        </div>
     </div>
+      </div>
   </div>
 </div>
 
 
-<div class="container">
-  <h2>My bookings</h2>
+<div class="container" style="border-top: 1px solid grey !important;">
+  <p style="font-size: 24px; font-weight: bold; margin-top: 8px;">My bookings</p>
   <div class="row">
     <% current_user.bookings.each do |booking| %>
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card" style="width: 100%;">
+        <div class="card shadow-sm" style="width: 100%; border-radius: 8px;">
           <div class="card-body">
-            <h5 class="card-title"><%= booking.date %></h5>
-            <p class="card-text">Address: <%= booking.pokemon.address %></p>
+            <div>
+              <h5 class="card-title">Date: <%= booking.date %></h5>
+              <p class="card-text">Address: <%= booking.pokemon.address %></p>
+            </div>
             <p class="card-text">Pokemon: <%= booking.pokemon.name %></p>
             <p class="card-text">User: <%= booking.pokemon.user.first_name %></p>
-            <%# <%= link_to "See more details", booking_path(booking), class: "btn btn-primary" %>
           </div>
         </div>
       </div>
