@@ -15,7 +15,11 @@
           <% @pokemons.each do |pokemon| %>
             <div class="col-sm-12 col-md-6 col-lg-4">
               <div class="card rounded border-warning shadow-sm" style="width: 100%;">
-                <%= image_tag pokemon.image_path %>
+                <% if pokemon.image_path %>
+                  <%= image_tag pokemon.image_path %>
+                <% else %>
+                  <%= cl_image_tag pokemon.photo.key %>
+                <% end %>
                 <div class="card-body">
                   <h5 class="card-title"><%= pokemon.name %></h5>
                   <p class="card-text">Address: <%= pokemon.address %></p>
