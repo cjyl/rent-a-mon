@@ -41,6 +41,21 @@
 
     <div class="col-12 col-lg-3 px-3">
       <h3>About the owner</h3>
+      <div class="card-profile">
+          <% if @pokemon.user.photo.attached? %>
+            <%= cl_image_tag @pokemon.user.photo.key, class:"profile-img" %>
+          <% else %>
+            <%= image_tag @pokemon.user.image_path, class:"profile-img" %>
+          <% end %>
+          <div class="card-body">
+            <div class="pb-3"style="border-bottom: 1px solid grey !important;">
+              <%= image_tag "poke-profile.png", class:"poke-profile-img"%> Pokemons: <%= @pokemon.user.pokemons.length %> <br>
+              <i class="fa-solid fa-star pt-3" style="font-size: 24px;"></i> Reviews: <%= @pokemon.user.reviews.length %> <br>
+            </div>
+            <p>Name: <%= @pokemon.user.first_name %></p>
+            <p>Surname: <%= @pokemon.user.last_name %></p>
+          </div>
+          </div>
     </div>
 
 

@@ -24,17 +24,15 @@ class PokemonsController < ApplicationController
     @pokemon = Pokemon.new(pokemon_params)
     @pokemon.user = current_user
     if @pokemon.save
-      redirect_to root_path
+      redirect_to profile_users_path
     else
       render 'new', status: :unprocessable_entity
     end
   end
 
-
-
   private
 
   def pokemon_params
-    params.require(:pokemon).permit(:name, :element, :move, :location)
+    params.require(:pokemon).permit(:name, :element, :move, :address, :photo)
   end
 end
