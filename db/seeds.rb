@@ -13,7 +13,7 @@ Pokemon.destroy_all
 User.destroy_all
 puts "Creating pokemon"
 
-10.times do
+24.times do
   user = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -30,12 +30,15 @@ puts "Creating pokemon"
     ability['ability']['name'].capitalize
   end
   abilities = moves.join('; ')
+  image_path = pokemon['sprites']['other']['official-artwork']['front_default']
 
   Pokemon.create(
+
     name: name,
     move: abilities,
     address: %w[Westminster Southwark Lambeth Hackney Greenwich Islington Camden Chelsea Kensington Woolwich Hoxton Whitechapel].sample,
     element: type,
+    image_path: image_path,
     user: user
   )
   # puts "Creating #{user.email}"
