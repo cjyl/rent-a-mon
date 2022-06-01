@@ -15,7 +15,7 @@
           <% @pokemons.each do |pokemon| %>
             <div class="col-sm-12 col-md-6 col-lg-4">
               <div class="card rounded border-warning shadow-sm" style="width: 100%;">
-                <%= image_tag('pikachu.png') %>
+                <%= image_tag pokemon.image_path %>
                 <div class="card-body">
                   <h5 class="card-title"><%= pokemon.name %></h5>
                   <p class="card-text">Address: <%= pokemon.address %></p>
