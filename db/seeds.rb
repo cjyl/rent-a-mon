@@ -22,7 +22,7 @@ puts "Creating pokemon"
   Pokemon.create(
     name: Faker::Games::Pokemon.name,
     move: Faker::Games::Pokemon.move,
-    address: Faker::Address.full_address,
+    address: %w[Westminster Southwark Lambeth Hackney Greenwich Islington Camden Marylebone].sample,
     element: %w[Normal Fire Electric Rock Water].sample,
     user: user
   )
