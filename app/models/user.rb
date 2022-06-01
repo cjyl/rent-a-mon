@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :pokemons, dependent: :destroy
   has_many :bookings
   has_one_attached :photo
+  has_many :reviews, through: :pokemons
 
   def image_path
     case gender
