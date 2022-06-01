@@ -17,7 +17,7 @@ puts "Creating pokemon"
   user = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    gender: Faker::Gender.binary_type,
+    gender: Faker::Gender.binary_type.downcase,
     email: Faker::Internet.email,
     password: Faker::Internet.password
   )
