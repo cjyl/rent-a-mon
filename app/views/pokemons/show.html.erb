@@ -1,5 +1,5 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://pokemonrevolution.net/forum/uploads/monthly_2019_07/grasspokes.gif.f4c3e5db10fdcb5bc0f9fb101c54debd.gif)">
-  Let's play
+  Let's play with <%= @pokemon.name %>
 </div>
 
 <div class="container mt-5">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="col-12 col-lg-6 px-5">
-      <div class="card" style="width: 100%; boarder: 1px solid black;">
+      <div class="card" style="width: 100%;">
        <% if @pokemon.image_path %>
           <%= image_tag @pokemon.image_path %>
         <% else %>
@@ -35,9 +35,9 @@
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Address: <%= @pokemon.address %></li>
-          <li class="list-group-item">Element: <%= @pokemon.element %></li>
-          <li class="list-group-item">Move: <%= @pokemon.move %></li>
+          <li class="list-group-item"> 📍 Location: <%= @pokemon.address %></li>
+          <li class="list-group-item"> ⚛️ Element: <%= @pokemon.element %></li>
+          <li class="list-group-item"> ⚡️ Move: <%= @pokemon.move %></li>
         </ul>
       </div>
     </div>
