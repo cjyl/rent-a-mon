@@ -11,11 +11,19 @@
 
 }
 
-// .button-view-me a{
-//   text-decoration: none !important;
-//   color: white;
-//   font-weight: bold;
-//   &:hover {
-//     cursor: url('cursor_icon.png'), pointer;
-//   }
-// }
+.btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  box-shadow: #FFCD00;
+  padding: 8px 24px;
+  border-radius: 25px;
+  font-weight: lighter;
+  opacity: 0.6;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+  color: #FFCD00;
+  border: 1px solid #FFCD00;
+  font-weight: bolder;
+}

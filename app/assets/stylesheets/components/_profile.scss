@@ -27,8 +27,8 @@
 }
 
 .profile-img {
-  width: 140px;;
-  height: 140px;
+  width: 180px;;
+  height: 180px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -62,11 +62,11 @@
 
 .pokemon-edit {
   position: relative;
-  top: 30px;
+  top: -300px;
   right: -300px;
 }
 
 .pokemon-add {
-  position: relative;
-  top: 30px;
+  border-radius: 25px;
+  padding: 8px 24px !important;
 }

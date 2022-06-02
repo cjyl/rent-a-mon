@@ -16,12 +16,12 @@
               <div class="pb-3"style="border-bottom: 1px solid grey !important;">
                 <%= image_tag "poke-profile.png", class:"poke-profile-img"%> Pokemons: <%= current_user.pokemons.length %> <br>
                 <i class="fa-solid fa-star pt-3" style="font-size: 24px;"></i> Reviews: <%= current_user.reviews.length %> <br>
-                <i class="fa-solid fa-book pt-3" style="font-size: 24px;"></i> Bookings: <%= current_user.bookings.length %> <br>
+                <i class="fa-solid fa-book pt-4 pb-4" style="font-size: 24px;"></i> Bookings: <%= current_user.bookings.length %> <br>
               </div>
               <div class="pb-3">
-                <p class="pt-3">Name: <%= current_user.first_name %></p>
+                <p class="pt-4">Name: <%= current_user.first_name %></p>
                 <p>Surname: <%= current_user.last_name %></p>
-                <%= link_to "Edit profile",  edit_user_registration_path, class:"btn btn-success" %>
+                <%= link_to "Edit profile",  edit_user_registration_path, class:"btn btn-ghost mt-4" %>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@
     <div class="col-8">
       <div class="container mb-3">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 mb-3 mt-3">
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" >
                 <div class="carousel-inner">
                   <% current_user.pokemons.each_with_index do |pokemon, i| %>
@@ -43,7 +43,7 @@
                             <p>⚛️ Element: <%= pokemon.element %></p>
                             <p>⚡️ Move: <%= pokemon.move %></p>
                           </div>
-                          <%= link_to "Edit my pokemon", edit_pokemon_path(pokemon), class: "btn btn-primary pokemon-edit" %>
+                          <%= link_to "Edit my pokemon", edit_pokemon_path(pokemon), class: "btn btn-ghost pokemon-edit" %>
                         </div>
                       </div>
                     <% else %>
@@ -55,7 +55,7 @@
                             <p>⚛️ Element: <%= pokemon.element %></p>
                             <p>⚡️ Move: <%= pokemon.move %></p>
                           </div>
-                          <%= link_to "Edit my pokemon", edit_pokemon_path(pokemon), class: "btn btn-primary pokemon-edit" %>
+                          <%= link_to "Edit my pokemon", edit_pokemon_path(pokemon), class: "btn btn-ghost pokemon-edit" %>
                         </div>
                       </div>
                     <% end %>
