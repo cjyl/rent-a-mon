@@ -18,7 +18,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-8 mt-5">
+    <div class="col-6 mt-5">
       <div class="container">
         <div class="row g-3">
 
@@ -35,9 +35,9 @@
               <% end %>
               <div class="card-body">
                 <h4 class="card-title"><%= pokemon.name %></h4>
-                <p class="card-text"> 📍 Location: <%= pokemon.address %></p>
-                <p class="card-text"> ⚛️ Element: <%= pokemon.element %></p>
-                <p class="card-text"> 🤹 Trainer: <%= pokemon.user.first_name %></p>
+                <p class="card-text"> 📍 <%= pokemon.address %></p>
+                <p class="card-text"> ⚛️ <%= pokemon.element %></p>
+                <p class="card-text"> 🤹 <%= pokemon.user.first_name %></p>
               </div>
             </div>
             </div>
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="col-4 mt-5">
+    <div class="col-6 mt-5">
       <div id="map" style="width: 100%; height: 600px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
