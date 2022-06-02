@@ -1,0 +1,40 @@
+.carousel-item > img {
+  height: 400px;
+  object-fit: contain;
+  background-size: cover;
+}
+
+.active  {
+  height: 400px;
+  object-fit: contain;
+  background-size: cover;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.carousel {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.carousel-text {
+  font-weight: bolder;
+  text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+  color: #FFCD00;
+}
+
+.carousel-title {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  text-align: left;
+  left: -105px;
+  top: -170px;
+}
+
+.carousel-info {
+  font-size: 20px;
+  position: relative;
+  right: 110px;
+  bottom: -85px;
+  text-align: left;
+}

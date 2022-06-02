@@ -8,6 +8,19 @@
   border-radius: 8px;
   overflow: hidden;
   align-items: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#user-card {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  max-width: 308px !important;
+  padding: 24px !important;
+  border: 1px solid #DDDDDD !important;
+  border-radius: 8px;
+  overflow: hidden;
+  align-items: center;
   position: relative;
   top: -130px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -36,7 +49,7 @@
     background-size: cover;
     background-position: center;
     object-fit: cover;
-    height: 500px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +57,16 @@
     font-size: 36px;
     font-weight: bold;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    border-radius: 5px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.pokemon-edit {
+  position: relative;
+  top: 30px;
+  right: -300px;
+}
+
+.pokemon-add {
+  position: relative;
+  top: 30px;
 }
