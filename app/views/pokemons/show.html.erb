@@ -2,14 +2,13 @@
   Let's play
 </div>
 
-
 <div class="container mt-5">
   <div class="row g-5">
 
     <div class="col-12 col-lg-3 px-3">
       <div style ="backgroud-color: tomato;">
         <% if user_signed_in? %>
-          <h3>Book this Pokémon!</h3>
+          <h3 class="fw-bolder">Book this Pokémon!</h3>
             <%= simple_form_for [@pokemon, @booking] do |f| %>
               <div class="form-inputs">
                 <%= f.input :date %>
@@ -44,7 +43,7 @@
     </div>
 
     <div class="col-12 col-lg-3 px-3">
-      <h3>About the owner</h3>
+      <h3 class="fw-bolder">About the owner</h3>
       <div class="card-profile">
           <% if @pokemon.user.photo.attached? %>
             <%= cl_image_tag @pokemon.user.photo.key, class:"profile-img" %>
@@ -61,13 +60,56 @@
           </div>
           </div>
     </div>
-
-
   </div>
-  <div>
-    <div class="form-floating my-3">
-      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-      <label for="floatingTextarea2">Review this pokemon</label>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-4">
+        <h1 class="fw-bold">Review this Pokémon!</h1>
+        <%= simple_form_for [@pokemon, @review] do |f| %>
+        <div class="form-inputs">
+            <%= f.input :content, placeholder: 'Such a cool Pokémon!' %>
+            <%# FOR TEAM (FROM JOHAN): Lines 79-96 are WIP – can bring back in if we can get it working %>
+            <%# <div class="stars stars-example-css">
+              <div class="br-wrapper br-theme-css-stars">
+                <select id="rating-stars" name="rating" autocomplete="off">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <div class="br-widget">
+                  <a href="#" data-rating-value="1" data-rating-text="1" class="br-selected br-current"></a>
+                  <a href="#" data-rating-value="2" data-rating-text="2" class="br-selected br-current"></a>
+                  <a href="#" data-rating-value="3" data-rating-text="3" class="br-selected br-current"></a>
+                  <a href="#" data-rating-value="4" data-rating-text="4" class="br-selected br-current"></a>
+                  <a href="#" data-rating-value="5" data-rating-text="5" class="br-selected br-current"></a>
+                </div>
+              </div>
+            </div> %>
+            <%= f.input :rating %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Rate this Pokémon", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-8">
+        <div class="container">
+          <div class="row">
+            <% @pokemon.reviews.each do |review| %>
+              <div class="col-sm-12 col-md-6 col-lg-6 g-3">
+                <div class="shadow-sm px-3 py-2 bg-white">
+                  <p><%= "⭐️" * review.rating %></p>
+                  <p><em>"<%= review.content %>"</em></p>
+                  <p class="opacity-25"><%= review.created_at.strftime("%d %B %Y ") %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
