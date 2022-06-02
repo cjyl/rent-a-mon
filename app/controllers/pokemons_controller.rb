@@ -6,7 +6,8 @@ class PokemonsController < ApplicationController
       {
         lat: pokemon.latitude,
         lng: pokemon.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { pokemon: pokemon })
+        info_window: render_to_string(partial: "info_window", locals: { pokemon: pokemon }),
+        image_url: (pokemon.image_path ? pokemon.image_path : pokemon.photo.key)
       }
     end
   end
