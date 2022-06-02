@@ -3,7 +3,8 @@
   width: 70vh;
   object-fit: cover;
   position: sticky;
-  top: 75px;
+  top: 120px;
+  box-shadow: 0px 0px 8px #FFCC02;
 }
 
 .mapboxgl-popup {
@@ -12,7 +13,7 @@
 
 .mapboxgl-popup-content {
   background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("gold_pokeball.png") !important;
-  width: 500px !important;
+  width: 100% !important;
   background-size: cover !important;
   font-weight: bold !important;
   text-align: center;
