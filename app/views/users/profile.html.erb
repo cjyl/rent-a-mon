@@ -44,9 +44,45 @@
         </div>
       <div class="row justify-content-center">
         <div class="col-auto">
-          <%= link_to "Add a Pokemon",  new_pokemon_path, class:"btn btn-primary my-3" %>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddMonForm">
+            Add a Pokemon
+          </button>
+
+          <div class="modal fade" id="AddMonForm" tabindex="-1" aria-labelledby="AddMonFormLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="AddMonFormLabel">Add a pokemon</h5>
+                </div>
+                <div class="modal-body">
+
+                    <%= simple_form_for @pokemon do |f| %>
+
+                      <div class="form-inputs">
+                        <%= f.input :name %>
+                        <%= f.input :element %>
+                        <%= f.input :move %>
+                        <%= f.input :photo, as: :file %>
+                        <%= f.input :address,
+                          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+                      </div>
+
+                      <div class="form-actions">
+                        <%= f.button :submit, "GoOoOD", class: "btn btn-primary" %>
+                      </div>
+
+                    <% end %>
+
+                </div>
+
+              </div>
+            </div>
           </div>
+
+
         </div>
+      </div>
       </div>
     </div>
   </div>

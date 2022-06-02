@@ -1,0 +1,21 @@
+<div class="poke-new mt-5">
+
+  <%= simple_form_for @pokemon do |f| %>
+
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :element %>
+      <%= f.input :move %>
+      <%= f.input :photo, as: :file %>
+      <%= f.input :address,
+        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Add your pokemon", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+</div>
