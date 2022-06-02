@@ -10,7 +10,7 @@ class PokemonsController < ApplicationController
       OR users.first_name @@ :query
       OR users.last_name @@ :query
     SQL
-    @pokemons = Pokemon.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+      @pokemons = Pokemon.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
       @pokemons = Pokemon.all
     end
@@ -19,7 +19,7 @@ class PokemonsController < ApplicationController
         lat: pokemon.latitude,
         lng: pokemon.longitude,
         info_window: render_to_string(partial: "info_window", locals: { pokemon: pokemon }),
-        image_url: (pokemon.image_path ? pokemon.image_path : pokemon.photo.key)
+        image_url: (pokemon.image_path ? pokemon.image_path : helpers.cl_image_path(pokemon.photo.key))
       }
     end
   end
