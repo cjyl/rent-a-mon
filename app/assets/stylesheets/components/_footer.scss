@@ -3,10 +3,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  min-height: 200px;
   width: 100%;
   padding: 0px 50px;
-  color: #000000;
+  color: white;
   margin-top: 50px;
 }
 .footer-links {
@@ -25,4 +25,10 @@
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 20px;
+  margin: 0 auto;
 }

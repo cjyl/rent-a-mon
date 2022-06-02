@@ -5,3 +5,19 @@
   position: sticky;
   top: 75px;
 }
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("gold_pokeball.png") !important;
+  width: 500px !important;
+  background-size: cover !important;
+  font-weight: bold !important;
+  text-align: center;
+  color: white !important;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 8px !important;
+  border: 1px solid #DDDDDD !important;
+}

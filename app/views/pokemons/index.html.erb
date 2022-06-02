@@ -1,4 +1,4 @@
-<div class="banner text-center" style="background-image: url(<%= asset_path('background_image_v2.jpg') %>);">
+<div class="banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= asset_path('background_image_v2.jpg') %>);">
   <div class="container justify-content-center">
     <h1 class="py-4">Gotta Beat 'Em All!</h1>
     <div class="search-bar">
@@ -18,28 +18,31 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-8">
+
+    <div class="col-8 mt-5">
       <div class="container my-4">
         <div class="row g-4">
 
           <% @pokemons.each do |pokemon| %>
             <div class="col-sm-12 col-md-6 col-lg-4">
               <%= link_to pokemon_path(pokemon), class:"text-decoration-none" do %>
+
                 <div class="card border-warning card-img">
+
                   <% if pokemon.image_path %>
                     <%= image_tag pokemon.image_path %>
                   <% else %>
                     <%= cl_image_tag pokemon.photo.key %>
                   <% end %>
 
-                  <div class="card-body">
-                    <h4 class="card-title"><%= pokemon.name %></h4>
-                    <p class="card-text">Address: <%= pokemon.address %></p>
-                    <p class="card-text">Element: <%= pokemon.element %></p>
-                    <p class="card-text">Trainer: <%= pokemon.user.first_name %></p>
-                  </div>
-                </div>
-              <% end %>
+              <div class="card-body">
+                <h4 class="card-title"><%= pokemon.name %></h4>
+                <p class="card-text"> 📍 Location: <%= pokemon.address %></p>
+                <p class="card-text"> ⚛️ Element: <%= pokemon.element %></p>
+                <p class="card-text"> 🤹 Trainer: <%= pokemon.user.first_name %></p>
+              </div>
+            </div>
+
             </div>
           <% end %>
 
@@ -52,5 +55,6 @@
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       </div>
+
   </div>
 </div>
