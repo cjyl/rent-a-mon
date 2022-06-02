@@ -1,7 +1,16 @@
 <div class="banner text-center" style="background-image: url(<%= asset_path('background_image_v2.jpg') %>);">
   <div class="container">
     <h1 class="py-4">Gotta Beat 'Em All!</h1>
-    <a class="btn btn-primary" href="#">Search now</a>
+
+    <%= form_tag root_path, method: :get, class: "d-inline-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a Pokemon"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+
     <%# <%= form_for  <--This is later for search %>
   </div>
 </div>

@@ -1,7 +1,29 @@
 class PokemonsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  # def index
+  #   @pokemons = Pokemon.all
+  #   @markers = @pokemons.geocoded.map do |pokemon|
+  #     {
+  #       lat: pokemon.latitude,
+  #       lng: pokemon.longitude,
+  #       info_window: render_to_string(partial: "info_window", locals: { pokemon: pokemon })
+  #     }
+  #   end
+  # end
+
   def index
-    @pokemons = Pokemon.all
+    if params[:query].present?
+      sql_query = <<~SQL
+      pokemons.name @@ :query
+      OR pokemons.element @@ :query
+      OR pokemons.address @@ :query
+      OR users.first_name @@ :query
+      OR users.last_name @@ :query
+    SQL
+    @pokemons = Pokemon.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @pokemons = Pokemon.all
+    end
     @markers = @pokemons.geocoded.map do |pokemon|
       {
         lat: pokemon.latitude,
