@@ -1,8 +1,18 @@
 <div class="banner text-center" style="background-image: url(<%= asset_path('background_image_v2.jpg') %>);">
-  <div class="container">
+  <div class="container justify-content-center">
     <h1 class="py-4">Gotta Beat 'Em All!</h1>
-    <a class="btn btn-primary" href="#">Search now</a>
-    <%# <%= form_for  <--This is later for search %>
+    <div class="search-bar">
+
+      <%= form_tag root_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control search-input",
+          placeholder: "Find a pokemon near you!"
+        %>
+        <%= submit_tag "", class: "search-button" %>
+      <% end %>
+
+    </div>
   </div>
 </div>
 
