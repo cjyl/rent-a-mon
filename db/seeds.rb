@@ -33,7 +33,6 @@ puts "Creating pokemon"
   image_path = pokemon['sprites']['other']['official-artwork']['front_default']
 
   Pokemon.create(
-
     name: name,
     move: abilities,
     address: %w[Westminster Southwark Lambeth Hackney Greenwich Islington Chelsea Kensington Woolwich Hoxton Whitechapel].sample,
