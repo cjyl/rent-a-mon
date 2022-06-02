@@ -3,27 +3,8 @@
 </div>
 
 <div class="container mt-5">
-  <div class="row g-5">
-
-    <div class="col-12 col-lg-3 px-3">
-      <div style ="backgroud-color: tomato;">
-        <% if user_signed_in? %>
-          <h3 class="fw-bolder">Book this Pokémon!</h3>
-            <%= simple_form_for [@pokemon, @booking] do |f| %>
-              <div class="form-inputs">
-                <%= f.input :date %>
-              </div>
-              <div class="form-actions">
-                <%= f.button :submit, "Book this Pokémon", class: "btn btn-primary" %>
-              </div>
-            <% end %>
-        <% else %>
-          <h1>Please log in to book a battle!</h1>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="col-12 col-lg-6 px-5">
+  <div class="row g-5 pb-3">
+    <div class="col-sm-12 col-lg-6 px-5">
       <div class="card" style="width: 100%;">
        <% if @pokemon.image_path %>
           <%= image_tag @pokemon.image_path %>
@@ -42,33 +23,59 @@
       </div>
     </div>
 
-    <div class="col-12 col-lg-3 px-3">
-      <h3 class="fw-bolder">About the owner</h3>
-      <div class="card-profile">
-          <% if @pokemon.user.photo.attached? %>
-            <%= cl_image_tag @pokemon.user.photo.key, class:"profile-img" %>
-          <% else %>
-            <%= image_tag @pokemon.user.image_path, class:"profile-img" %>
-          <% end %>
-          <div class="card-body">
-            <div class="pb-3"style="border-bottom: 1px solid grey !important;">
-              <%= image_tag "poke-profile.png", class:"poke-profile-img"%> Pokemons: <%= @pokemon.user.pokemons.length %> <br>
-              <i class="fa-solid fa-star pt-3" style="font-size: 24px;"></i> Reviews: <%= @pokemon.user.reviews.length %> <br>
+    <div class="col-sm-12 col-lg-6 px-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 px-3">
+            <h3 class="fw-bolder"><%= @pokemon.user.first_name %> owns <%= @pokemon.name %> </h3>
+            <div class="card-profile">
+                <% if @pokemon.user.photo.attached? %>
+                  <%= cl_image_tag @pokemon.user.photo.key, class:"profile-img" %>
+                <% else %>
+                  <%= image_tag @pokemon.user.image_path, class:"profile-img" %>
+                <% end %>
+                <div class="card-body">
+                  <div class="pb-3"style="border-bottom: 1px solid grey !important;">
+                    <%= image_tag "poke-profile.png", class:"poke-profile-img"%> Pokemons: <%= @pokemon.user.pokemons.length %> <br>
+                    <i class="fa-solid fa-star pt-3" style="font-size: 24px;"></i> Reviews: <%= @pokemon.user.reviews.length %> <br>
+                  </div>
+                  <p class="pt-3">Name: <%= @pokemon.user.first_name %></p>
+                  <p>Surname: <%= @pokemon.user.last_name %></p>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12 px-3">
+            <div style ="backgroud-color: tomato;">
+              <% if user_signed_in? %>
+                <h4 class="fw-bolder"> Book a battle with <%= @pokemon.name %> and <%= @pokemon.user.first_name %> </h4>
+                  <%= simple_form_for [@pokemon, @booking] do |f| %>
+                    <div class="form-inputs">
+                      <%= f.input :date %>
+                    </div>
+                    <div class="form-actions">
+                      <%= f.button :submit, "Book this Pokémon", class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
+              <% else %>
+                <h1>Please log in to book a battle!</h1>
+              <% end %>
             </div>
-            <p class="pt-3">Name: <%= @pokemon.user.first_name %></p>
-            <p>Surname: <%= @pokemon.user.last_name %></p>
           </div>
-          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="container mt-5">
+  <div class="container mt-5 border-top pt-5">
+  <h1 class="fw-bold text-center"> <%= @pokemon.name %> Reviews </h1>
     <div class="row">
       <div class="col-4">
-        <h1 class="fw-bold">Review this Pokémon!</h1>
         <%= simple_form_for [@pokemon, @review] do |f| %>
         <div class="form-inputs">
-            <%= f.input :content, placeholder: 'Such a cool Pokémon!' %>
+            <%= f.label :content, "How was your battle with #{@pokemon.name}?" %>
+            <%= f.input :content, placeholder: 'Such a cool Pokémon to battle!', label: false %>
             <%# FOR TEAM (FROM JOHAN): Lines 79-96 are WIP – can bring back in if we can get it working %>
             <%# <div class="stars stars-example-css">
               <div class="br-wrapper br-theme-css-stars">
@@ -88,7 +95,16 @@
                 </div>
               </div>
             </div> %>
-            <%= f.input :rating %>
+            <%= f.label :rating, "Rating" %>
+            <%= f.input :rating, placeholder: "1-5", label: false %>
+            <%# <select class="star-rating">
+                <option value="">Select a rating</option>
+                <option value="5">Excellent</option>
+                <option value="4">Very Good</option>
+                <option value="3">Average</option>
+                <option value="2">Poor</option>
+                <option value="1">Terrible</option>
+            </select> %>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Rate this Pokémon", class: "btn btn-primary" %>
@@ -100,10 +116,10 @@
           <div class="row">
             <% @pokemon.reviews.each do |review| %>
               <div class="col-sm-12 col-md-6 col-lg-6 g-3">
-                <div class="shadow-sm px-3 py-2 bg-white">
-                  <p><%= "⭐️" * review.rating %></p>
+                <div class="shadow-sm px-3 pt-3 pb-1 bg-white">
+                  <h4><%= "⭐️" * review.rating %></h4>
                   <p><em>"<%= review.content %>"</em></p>
-                  <p class="opacity-25"><%= review.created_at.strftime("%d %B %Y ") %></p>
+                  <p class="opacity-25">Posted on <%= review.created_at.strftime("%d %B %Y ") %></p>
                 </div>
               </div>
             <% end %>
