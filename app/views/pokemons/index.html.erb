@@ -1,48 +1,52 @@
-<div class="banner text-center" style="background-image: url(<%= asset_path('background_image_v2.jpg') %>);">
-  <div class="container">
+<div class="banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= asset_path('background_image_v2.jpg') %>);">
+  <div class="container justify-content-center">
     <h1 class="py-4">Gotta Beat 'Em All!</h1>
+    <div class="search-bar">
 
-    <%= form_tag root_path, method: :get, class: "d-inline-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a Pokemon"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
-
-    <%# <%= form_for  <--This is later for search %>
+      <%= form_tag root_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control search-input",
+          placeholder: "Find a pokemon near you!"
+        %>
+        <%= submit_tag "", class: "search-button" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
 
 <div class="container">
   <div class="row">
-    <div class="col-8">
-      <div class="container my-3">
+    <div class="col-8 mt-5">
+      <div class="container">
         <div class="row g-3">
+
           <% @pokemons.each do |pokemon| %>
             <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="card rounded border-warning shadow-sm" style="width: 100%;">
-                <% if pokemon.image_path %>
-                  <%= image_tag pokemon.image_path %>
-                <% else %>
-                  <%= cl_image_tag pokemon.photo.key %>
-                <% end %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= pokemon.name %></h5>
-                  <p class="card-text">Address: <%= pokemon.address %></p>
-                  <p class="card-text">Element: <%= pokemon.element %></p>
-                  <p class="card-text">Trainer: <%= pokemon.user.first_name %></p>
-                  <%= link_to "View me!", pokemon_path(pokemon), class: 'btn btn-outline-primary' %>
-                </div>
+              <%= link_to pokemon_path(pokemon), class:"text-decoration-none" do %>
+                <div class="card rounded shadow-sm card-img">
+                  <% if pokemon.image_path %>
+                    <%= image_tag pokemon.image_path %>
+                  <% else %>
+                    <%= cl_image_tag pokemon.photo.key %>
+                  <% end %>
+
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title"><%= pokemon.name %></h4>
+                <p class="card-text"> 📍 Location: <%= pokemon.address %></p>
+                <p class="card-text"> ⚛️ Element: <%= pokemon.element %></p>
+                <p class="card-text"> 🤹 Trainer: <%= pokemon.user.first_name %></p>
               </div>
             </div>
+            </div>
           <% end %>
+
         </div>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-4 mt-5">
       <div id="map" style="width: 100%; height: 600px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
