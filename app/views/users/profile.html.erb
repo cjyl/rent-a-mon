@@ -1,4 +1,7 @@
-<div class="container">
+<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path('pokemon_background.png')%>">
+</div>
+
+<div class="container" id="profile-background">
   <div class="row mt-3">
     <div class="col-4">
       <div class="align-items-center" style="width: 100%;">
@@ -17,7 +20,6 @@
               <div class="pb-3">
                 <p class="pt-3">Name: <%= current_user.first_name %></p>
                 <p>Surname: <%= current_user.last_name %></p>
-                <p>Gender: <%= current_user.gender %></p>
                 <%= link_to "Edit profile",  edit_user_registration_path, class:"btn btn-success" %>
               </div>
             </div>
