@@ -2,8 +2,8 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
-import "jquery.barrating.min.js"
-import "fontawesome-stars.css"
+// import "jquery.barrating.min.js"
+// import "fontawesome-stars.css"
 
 document.addEventListener("turbolinks:load", function(event) {
   $(function() {
