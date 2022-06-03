@@ -96,3 +96,15 @@
   cursor: url('cursor_icon.png'), pointer;
   transform: scale(0.95 );
 }
+
+.link-card {
+  text-decoration: none;
+  color:white;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+  &:focus {
+    outline: none;
+  }
+}

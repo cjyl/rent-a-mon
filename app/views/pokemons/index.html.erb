@@ -27,7 +27,7 @@
             <div class="col-sm-12 col-md-6 col-lg-4">
               <%= link_to pokemon_path(pokemon), class:"text-decoration-none" do %>
 
-                <div class="card card-img">
+                <div class="card card-img" id="card-index-<%=pokemon.id %>">
 
                   <% if pokemon.image_path %>
                     <%= image_tag pokemon.image_path %>
