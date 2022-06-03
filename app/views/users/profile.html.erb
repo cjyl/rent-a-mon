@@ -112,38 +112,36 @@
 </div>
 
 
-<div class="container mb-3" style="border-top: 1px solid lightgrey !important; border-bottom: 1px solid lightgrey !important;">
+<div class="container pb-2" style="border-top: 1px solid lightgrey !important; border-bottom: 1px solid lightgrey !important;">
   <p style="font-size: 24px; font-weight: bold; margin-top: 8px;">My booked battles</p>
-  <div class="row pb-3">
+  <div class="row">
     <% current_user.bookings.each do |booking| %>
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm" style="width: 100%; border-radius: 8px;">
-          <div class="card-body">
-            <div>
+        <%= link_to pokemon_path(booking.pokemon), class:"text-decoration-none" do %>
+          <div class="review-booking-card mb-3" id="booking-click" style="width: 100%; border-radius: 8px;">
+            <div class="card-body">
               <p class="booking-title">Booked for <%= booking.date.strftime("%d %B %Y ") %></p>
-              <p class="card-text">Address: <%= booking.pokemon.address %></p>
+              <p class="card-text"><em>Address: <%= booking.pokemon.address %></em></p>
+              <p class="card-text"><em>Pokemon: <%= booking.pokemon.name %></em></p>
+              <p class="card-text opacity-25">Owner: <%= booking.pokemon.user.first_name %></p>
             </div>
-            <p class="card-text">Pokemon: <%= booking.pokemon.name %></p>
-            <p class="card-text">User: <%= booking.pokemon.user.first_name %></p>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
 </div>
 
-<div class="container mb-4" style="border-bottom: 1px solid lightgrey !important;">
+<div class="container mb-4 mt-3">
   <p style="font-size: 24px; font-weight: bold;, margin-top: 8px;">My Pokemon reviews</p>
-  <div class="row pb-3">
+  <div class="row">
     <% current_user.reviews.each do |review| %>
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm" style="width: 100%; border-radius: 8px;">
+        <div class="review-booking-card mb-3" style="width: 100%; border-radius: 8px;">
           <div class="card-body">
-            <%# <div class="shadow-sm px-3 pt-3 pb-1 bg-white"> %>
-              <h4><%= "⭐️" * review.rating %></h4>
+              <h4><%= "❤️" * review.rating %></h4>
               <p><em>"<%= review.content %>"</em></p>
               <p class="opacity-25">Posted on <%= review.created_at.strftime("%d %B %Y ") %></p>
-            <%# </div> %>
           </div>
         </div>
       </div>

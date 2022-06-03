@@ -76,3 +76,23 @@
   font-weight: bolder;
   font-size: 16px;
 }
+
+.review-booking-card {
+  color: black;
+  align-items: center;
+  text-align: center;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px !important;
+  border: 1px solid #DDDDDD !important;
+  border-radius: 8px;
+  overflow: hidden;
+  align-items: center;
+  box-shadow: 0 0 8px rgb(250,218,94)
+}
+
+#booking-click:hover {
+  cursor: url('cursor_icon.png'), pointer;
+  transform: scale(0.95 );
+}
