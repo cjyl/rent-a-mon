@@ -27,3 +27,20 @@
   border: 1px solid #FFCD00;
   font-weight: bolder;
 }
+
+.btn-primary {
+  background-color: #0275BE;
+  // border: 1px solid #4A4A4A;
+  // box-shadow: #FFCD00;
+  padding: 8px 24px;
+  border-radius: 25px;
+  font-weight: lighter;
+
+}
+.btn-primary:hover {
+  background-color:white;
+  border: 1px solid #FFCD00;
+  font-weight: bolder;
+  color: #FFCD00;
+
+}

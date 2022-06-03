@@ -30,3 +30,12 @@
   cursor: url('cursor_icon.png'), pointer;
   transform: scale(0.95 );
 }
+
+.card-show {
+  transition: 0.5s;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  border: 6px solid #FFCC02;
+  color: black;
+  background: rgba(0, 0, 0, 0.01)
+}
