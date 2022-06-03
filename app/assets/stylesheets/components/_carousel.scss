@@ -13,7 +13,7 @@
 }
 
 .carousel {
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px #00000033;
   border: 6px solid #FFCC02;
 }
 
@@ -24,10 +24,14 @@
 
 .carousel-title {
   font-size: 30px;
+  font-weight: bold;
   position: relative;
   text-align: left;
   left: -105px;
   top: -170px;
+  color: black;
+	font-family: 900 60px Montserrat;
+	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-info {
