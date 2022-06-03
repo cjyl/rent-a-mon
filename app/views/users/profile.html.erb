@@ -1,11 +1,12 @@
-<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path('pokemon_background.png')%>">
+<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path('pokemon_background.png') %>)">
 </div>
+
 
 <div class="container" id="profile-background">
   <div class="row mt-3">
     <div class="col-4">
       <div class="align-items-center" style="width: 100%;">
-          <div class="card-profile">
+          <div id="user-card">
             <% if current_user && current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, class:"profile-img" %>
             <% else %>
@@ -15,12 +16,12 @@
               <div class="pb-3"style="border-bottom: 1px solid grey !important;">
                 <%= image_tag "poke-profile.png", class:"poke-profile-img"%> Pokemons: <%= current_user.pokemons.length %> <br>
                 <i class="fa-solid fa-star pt-3" style="font-size: 24px;"></i> Reviews: <%= current_user.reviews.length %> <br>
-                <i class="fa-solid fa-book pt-3" style="font-size: 24px;"></i> Bookings: <%= current_user.bookings.length %> <br>
+                <i class="fa-solid fa-book pt-4 pb-4" style="font-size: 24px;"></i> Bookings: <%= current_user.bookings.length %> <br>
               </div>
               <div class="pb-3">
-                <p class="pt-3">Name: <%= current_user.first_name %></p>
+                <p class="pt-4">Name: <%= current_user.first_name %></p>
                 <p>Surname: <%= current_user.last_name %></p>
-                <%= link_to "Edit profile",  edit_user_registration_path, class:"btn btn-success" %>
+                <%= link_to "Edit profile",  edit_user_registration_path, class:"btn btn-ghost mt-4" %>
               </div>
             </div>
           </div>
@@ -28,25 +29,53 @@
     </div>
     <div class="col-8">
       <div class="container mb-3">
-       <h2 style="font-size: 24px; font-weight: bold;">My pokemons</h2>
         <div class="row">
-          <% current_user.pokemons.each do |pokemon| %>
-            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-              <div class="card" style="width: 100%;">
-                <%= cl_image_tag pokemon.photo.key, class:"poke-img"%>
-                <div class="card-body">
-                  <h5 class="card-title"><%= pokemon.name %></h5>
-                  <p class="card-text">Element: <%= pokemon.element %></p>
-                  <p class="card-text">Trainer: <%= pokemon.user.first_name %></p>
-                  <%= link_to "Edit my pokemon", edit_pokemon_path(pokemon), class: "btn btn-primary" %>
+            <div class="col-sm-12 col-md-12 col-lg-12 mb-3 mt-3">
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" >
+                <div class="carousel-inner">
+                  <% current_user.pokemons.each_with_index do |pokemon, i| %>
+                    <% if i == 0 %>
+                      <div class="carousel-item active">
+                        <%= cl_image_tag pokemon.photo.key, class:"d-block w-100", style:"background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.0));" %>
+                        <div class="carousel-caption d-none d-md-block carousel-text">
+                          <h5 class="carousel-title"> Pokemon: <%=pokemon.name %></h5>
+                          <div class="carousel-info">
+                            <p>⚛️ Element: <%= pokemon.element %></p>
+                            <p>⚡️ Move: <%= pokemon.move %></p>
+                          </div>
+                          <%= link_to "Edit my pokemon", edit_pokemon_path(pokemon), class: "btn btn-ghost pokemon-edit" %>
+                        </div>
+                      </div>
+                    <% else %>
+                      <div class="carousel-item">
+                        <%= cl_image_tag pokemon.photo.key, class:"d-block w-100", style:"background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.0));" %>
+                        <div class="carousel-caption d-none d-md-block carousel-text">
+                          <h5 class="carousel-title"> Pokemon: <%=pokemon.name %></h5>
+                          <div class="carousel-info">
+                            <p>⚛️ Element: <%= pokemon.element %></p>
+                            <p>⚡️ Move: <%= pokemon.move %></p>
+                          </div>
+                          <%= link_to "Edit my pokemon", edit_pokemon_path(pokemon), class: "btn btn-ghost pokemon-edit" %>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
             </div>
-          <% end %>
         </div>
+
       <div class="row justify-content-center">
         <div class="col-auto">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddMonForm">
+          <button type="button" class="btn btn-primary pokemon-add" data-bs-toggle="modal" data-bs-target="#AddMonForm">
             Add a Pokemon
           </button>
 
@@ -57,43 +86,35 @@
                   <h5 class="modal-title" id="AddMonFormLabel">Add a pokemon</h5>
                 </div>
                 <div class="modal-body">
-
-                    <%= simple_form_for @pokemon do |f| %>
-
-                      <div class="form-inputs">
-                        <%= f.input :name %>
-                        <%= f.input :element %>
-                        <%= f.input :move %>
-                        <%= f.input :photo, as: :file %>
-                        <%= f.input :address,
-                          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-                          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-                      </div>
-
-                      <div class="form-actions">
-                        <%= f.button :submit, "GoOoOD", class: "btn btn-primary" %>
-                      </div>
-
-                    <% end %>
-
+                  <%= simple_form_for @pokemon do |f| %>
+                    <div class="form-inputs">
+                      <%= f.input :name %>
+                      <%= f.input :element %>
+                      <%= f.input :move %>
+                      <%= f.input :photo, as: :file %>
+                      <%= f.input :address,
+                        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+                    </div>
+                    <div class="form-actions">
+                      <%= f.button :submit, "GoOoOD", class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
                 </div>
-
               </div>
             </div>
           </div>
 
-
         </div>
-      </div>
       </div>
     </div>
   </div>
 </div>
 
 
-<div class="container" style="border-top: 1px solid grey !important;">
+<div class="container mb-3" style="border-top: 1px solid grey !important; border-bottom: 1px solid grey !important;">
   <p style="font-size: 24px; font-weight: bold; margin-top: 8px;">My bookings</p>
-  <div class="row">
+  <div class="row pb-3">
     <% current_user.bookings.each do |booking| %>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card shadow-sm" style="width: 100%; border-radius: 8px;">
@@ -104,6 +125,25 @@
             </div>
             <p class="card-text">Pokemon: <%= booking.pokemon.name %></p>
             <p class="card-text">User: <%= booking.pokemon.user.first_name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mb-4" style="border-bottom: 1px solid grey !important;">
+  <p style="font-size: 24px; font-weight: bold; margin-top: 8px;">My reviews</p>
+  <div class="row pb-3">
+    <% current_user.reviews.each do |review| %>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card shadow-sm" style="width: 100%; border-radius: 8px;">
+          <div class="card-body">
+            <div class="shadow-sm px-3 pt-3 pb-1 bg-white">
+              <h4><%= "⭐️" * review.rating %></h4>
+              <p><em>"<%= review.content %>"</em></p>
+              <p class="opacity-25">Posted on <%= review.created_at.strftime("%d %B %Y ") %></p>
+            </div>
           </div>
         </div>
       </div>
