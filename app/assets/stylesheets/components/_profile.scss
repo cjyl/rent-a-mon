@@ -60,6 +60,7 @@
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+
 .pokemon-edit {
   position: relative;
   top: -300px;
@@ -69,4 +70,9 @@
 .pokemon-add {
   border-radius: 25px;
   padding: 8px 24px !important;
+}
+
+.booking-title {
+  font-weight: bolder;
+  font-size: 16px;
 }

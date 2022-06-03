@@ -24,10 +24,14 @@
 
 .carousel-title {
   font-size: 30px;
+  font-weight: bold;
   position: relative;
   text-align: left;
   left: -105px;
   top: -170px;
+  color: black;
+	font-family: 900 60px Montserrat;
+	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-info {
