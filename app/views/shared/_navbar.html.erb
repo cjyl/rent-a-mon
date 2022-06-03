@@ -3,6 +3,11 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "rentamon-logo.png" %>
     <% end %>
+<div class="center-on-page">
+  <div class="pokeball">
+        <div class="pokeball__button"></div>
+      </div>
+      </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,10 +16,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto align-items-center">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <li class="nav-item m-3">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item m-3">
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
@@ -29,10 +34,10 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item m-2">
+          <li class="nav-item m-3">
             <%= link_to "Login", new_user_session_path, class: "nav-link", data: {turbo: false} %>
           </li>
-          <li class="nav-item m-2">
+          <li class="nav-item m-3">
             <%= link_to "Sign-up", new_user_registration_path, class: "nav-link", data: {turbo: false} %>
           </li>
         <% end %>
