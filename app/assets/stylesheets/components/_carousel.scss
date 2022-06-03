@@ -14,17 +14,16 @@
 
 .carousel {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border: 6px solid #FFCC02;
 }
 
 .carousel-text {
-  font-weight: bolder;
   text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
-  color: #FFCD00;
+  color: black;
 }
 
 .carousel-title {
   font-size: 30px;
-  font-weight: bold;
   position: relative;
   text-align: left;
   left: -105px;

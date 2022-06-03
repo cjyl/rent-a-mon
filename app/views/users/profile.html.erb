@@ -112,9 +112,9 @@
 </div>
 
 
-<div class="container" style="border-top: 1px solid grey !important;">
+<div class="container mb-3" style="border-top: 1px solid grey !important; border-bottom: 1px solid grey !important;">
   <p style="font-size: 24px; font-weight: bold; margin-top: 8px;">My bookings</p>
-  <div class="row">
+  <div class="row pb-3">
     <% current_user.bookings.each do |booking| %>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card shadow-sm" style="width: 100%; border-radius: 8px;">
@@ -125,6 +125,25 @@
             </div>
             <p class="card-text">Pokemon: <%= booking.pokemon.name %></p>
             <p class="card-text">User: <%= booking.pokemon.user.first_name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mb-4" style="border-bottom: 1px solid grey !important;">
+  <p style="font-size: 24px; font-weight: bold; margin-top: 8px;">My reviews</p>
+  <div class="row pb-3">
+    <% current_user.reviews.each do |review| %>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card shadow-sm" style="width: 100%; border-radius: 8px;">
+          <div class="card-body">
+            <div class="shadow-sm px-3 pt-3 pb-1 bg-white">
+              <h4><%= "⭐️" * review.rating %></h4>
+              <p><em>"<%= review.content %>"</em></p>
+              <p class="opacity-25">Posted on <%= review.created_at.strftime("%d %B %Y ") %></p>
+            </div>
           </div>
         </div>
       </div>
