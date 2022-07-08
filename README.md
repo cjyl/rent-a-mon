@@ -1,1 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+- Welcome to Rent-A-Mon https://rent-a-mon.herokuapp.com/ <br>
+- Rent-A-Mon is an AirBnB clone that allows user to rent a Pokémon. The user can search, upload, browse and book a battle with Pokémon around.
